@@ -15,39 +15,50 @@ Omar al-juwayr (443101385)
 
 ***********************************/
 public class Event implements Comparable<Event> {
-	private String event_title;
-	private Date event_date_time;
-	private String event_location;
-	public Contact Contact;
-
+	private String title;
+	private Date date_time;
+	private String location;
+	public Contact appointment_Contact;
+	BST<Contact>event_contacts; 
+	public int type;
 	
-
-
+	
+	// add appointment
 	public Event(String event_title, Date event_date_time, String event_location, Contact contact) {
-		this.event_title = event_title;
-		this.event_date_time = event_date_time;
-		this.event_location = event_location;
-		Contact = contact;
-	}
-
-	public String getEvent_title() {
-		return event_title;
-	}
-
-	public Date getEvent_date_time() {
-		return event_date_time;
+		this.title = event_title;
+		this.date_time = event_date_time;
+		this.location = event_location;
+		appointment_Contact = contact;
+		type = 0;
 	}
 	
-	public String getEvent_location() {
-		return event_location;
+	// events
+	public Event(String event_title, Date event_date_time, String event_location) {
+		this.title = event_title;
+		this.date_time = event_date_time;
+		this.location = event_location;
+		event_contacts = new BST<Contact>();
+		type = 1;
 	}
-	public Contact getContact() {
-		return Contact;
+
+	public String get_title() {
+		return title;
+	}
+
+	public Date get_date_time() {
+		return date_time;
+	}
+	
+	public String get_location() {
+		return location;
+	}
+	public Contact get_appContact() {
+		return appointment_Contact;
 	}
 
 
 	public int compareTo(Event e) {
-		return this.event_title.compareTo(e.event_title);
+		return this.title.compareTo(e.title);
 	}
 
 }

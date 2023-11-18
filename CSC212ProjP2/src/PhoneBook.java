@@ -73,12 +73,12 @@ public class PhoneBook {
 				// check elements in events list
 				while (!events.last()) {//n-1
 					// if event has same contact name that user enter.
-					if (events.retrieve().Contact.getContact_name().compareTo(n) == 0) {//n
+					if (events.retrieve().appointment_Contact.getContact_name().compareTo(n) == 0) {//n
 						System.out.println("Event found!\r\n");//n
-						System.out.println("Event title:" + events.retrieve().getEvent_title());//n
-						System.out.println("Contact name:" + events.retrieve().Contact.getContact_name());//n
-						System.out.println("Event date and time:" + events.retrieve().getEvent_date_time());//n
-						System.out.println("Event location:" + events.retrieve().getEvent_location());//n
+						System.out.println("Event title:" + events.retrieve().get_title());//n
+						System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//n
+						System.out.println("Event date and time:" + events.retrieve().get_date_time());//n
+						System.out.println("Event location:" + events.retrieve().get_location());//n
 						// change boolean found to true that means system find event has same contact name that user enter.
 						foundCon = true;//n
 					}
@@ -89,12 +89,12 @@ public class PhoneBook {
 				}
 				// check the last element in event list
 				// if event has same contact name that user enter.
-				if (events.retrieve().Contact.getContact_name().compareTo(n) == 0) {//1
+				if (events.retrieve().appointment_Contact.getContact_name().compareTo(n) == 0) {//1
 					System.out.println("Event found!\r\n");//1
-					System.out.println("Event title:" + events.retrieve().getEvent_title());//1
-					System.out.println("Contact name:" + events.retrieve().Contact.getContact_name());//1
-					System.out.println("Event date and time:" + events.retrieve().getEvent_date_time());//1
-					System.out.println("Event location:" + events.retrieve().getEvent_location());//1
+					System.out.println("Event title:" + events.retrieve().get_title());//1
+					System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//1
+					System.out.println("Event date and time:" + events.retrieve().get_date_time());//1
+					System.out.println("Event location:" + events.retrieve().get_location());//1
 					// change boolean found to true that means system find event has same contact name that user enter.
 
 					foundCon = true;//1
@@ -115,12 +115,12 @@ public class PhoneBook {
 				// check elements in events list
 				while (!events.last()) {//n-1
 					// if event has event title that user enter.
-					if (events.retrieve().getEvent_title().equalsIgnoreCase(n)) {//n
+					if (events.retrieve().get_title().equalsIgnoreCase(n)) {//n
 						System.out.println("Event found!\r\n");//n
-						System.out.println("Event title:" + events.retrieve().getEvent_title());//n
-						System.out.println("Contact name:" + events.retrieve().Contact.getContact_name());//n
-						System.out.println("Event date and time:" + events.retrieve().getEvent_date_time());//n
-						System.out.println("\nEvent location:" + events.retrieve().getEvent_location());//n
+						System.out.println("Event title:" + events.retrieve().get_title());//n
+						System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//n
+						System.out.println("Event date and time:" + events.retrieve().get_date_time());//n
+						System.out.println("\nEvent location:" + events.retrieve().get_location());//n
 						// change boolean found to true that means system find event has same event title that user enter.
 
 						foundCon = true;//n
@@ -131,12 +131,12 @@ public class PhoneBook {
 				}
 				// check the last element in event list
 				// if event has event title that user enter.
-				if (events.retrieve().getEvent_title().equalsIgnoreCase(n)) {//1
+				if (events.retrieve().get_title().equalsIgnoreCase(n)) {//1
 					System.out.println("Event found!\r\n");//1
-					System.out.println("Event title:" + events.retrieve().getEvent_title());//1
-					System.out.println("Contact name:" + events.retrieve().Contact.getContact_name());//1
-					System.out.println("Event date and time:" + events.retrieve().getEvent_date_time());//1
-					System.out.println("Event location:" + events.retrieve().getEvent_location());//1
+					System.out.println("Event title:" + events.retrieve().get_title());//1
+					System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//1
+					System.out.println("Event date and time:" + events.retrieve().get_date_time());//1
+					System.out.println("Event location:" + events.retrieve().get_location());//1
 					// change boolean found to true that means system find event has same event title that user enter.
 					foundCon = true;//1
 				}
@@ -195,19 +195,19 @@ public class PhoneBook {
 		events.findFirst();//1
 		// check elements in events list
 		while (!events.last()) {//n-1
-			System.out.println("Event title:" + events.retrieve().getEvent_title());//n
-			System.out.println("Contact name:" + events.retrieve().Contact.getContact_name());//n
-			System.out.println("Event date and time:" + events.retrieve().getEvent_date_time());//n
-			System.out.println("Event location:" + events.retrieve().getEvent_location());//n
+			System.out.println("Event title:" + events.retrieve().get_title());//n
+			System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//n
+			System.out.println("Event date and time:" + events.retrieve().get_date_time());//n
+			System.out.println("Event location:" + events.retrieve().get_location());//n
 			System.out.print("\n");//n
 			// move current into next element
 			events.findNext();//n
 		}
 		// print last element in event list.
-		System.out.println("Event title:" + events.retrieve().getEvent_title());//1
-		System.out.println("Contact name:" + events.retrieve().Contact.getContact_name());//1
-		System.out.println("Event date and time:" + events.retrieve().getEvent_date_time());//1
-		System.out.println("Event location:" + events.retrieve().getEvent_location());//1
+		System.out.println("Event title:" + events.retrieve().get_title());//1
+		System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//1
+		System.out.println("Event date and time:" + events.retrieve().get_date_time());//1
+		System.out.println("Event location:" + events.retrieve().get_location());//1
 		System.out.print("\n");//1
 		}
 	
@@ -258,7 +258,7 @@ public class PhoneBook {
 				while(!events.last()) {//n-1
 					
 					// check if there event for this contact in same event date/time
-					if(events.retrieve().getEvent_date_time().equals(event_datetime) && events.retrieve().getContact().getContact_name().equals(contact.getContact_name())) { //2n
+					if(events.retrieve().get_date_time().equals(event_datetime) && events.retrieve().get_appContact().getContact_name().equals(contact.getContact_name())) { //2n
 						System.out.println("Sorry there is event this time");  //n
 					return;
 					}
@@ -267,7 +267,7 @@ public class PhoneBook {
 				}
 				// check last element in event list
 				// check if there event for this contact in same event date/time
-				if(events.retrieve().getEvent_date_time().equals(event_datetime) && events.retrieve().getContact().getContact_name().equals(contact.getContact_name())) { //2
+				if(events.retrieve().get_date_time().equals(event_datetime) && events.retrieve().get_appContact().getContact_name().equals(contact.getContact_name())) { //2
 					System.out.println("Sorry there is event this time");                    //1        
 					return;//1
 				
