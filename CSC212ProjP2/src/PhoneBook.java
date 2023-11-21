@@ -157,32 +157,55 @@ public class PhoneBook {
 		
 	}
 	
-		
+public static BSTNode<Contact> searchBynumber(BSTNode<Contact> node, String number) { 
+	if (node==null) {
+    return null;
+}
+if (node.data.getContact_number().equalsIgnoreCase(number)) {
+    return node;
+}
+BSTNode<Contact> leftResult = searchBynumber(node.left,number);    
+if (leftResult!=null) {
+    return leftResult;
+}
+BSTNode<Contact> rightResult = searchBynumber(node.right,number);
+if (rightResult != null) {
+    return rightResult;
+}
+return null;
+}
 	
-	
-	
-		 /* this method for search in contacts list by name to get object */
-		public static Contact searchByName(String name) {
+    
+	public static BSTNode<Contact> print_firstname(BSTNode<Contact> node, String name) {
+
+		if (node==null) {
+		    return null;
+		}
+		String[] fulnum = node.data.getContact_name().split("\\s");
+		if (fulnum[0].equalsIgnoreCase(name)) {
+			System.out.print("Name:" + node.data.getContact_name()
+			+ "\nPhone Number:" + node.data.getContact_number()
+			+ "\nEmail Address:" + node.data.getContact_mail()
+			+ "\nAddress: " + node.data.getContact_address()
+			+ "\nBirthday:" + node.data.getContact_birthDay()
+			+ "\nNotes:" + node.data.getContact_notes());//1
+	System.out.print("\n");//1
+		}
 		
-			return null;//1
-			}
-			
+		BSTNode<Contact> leftResult = print_firstname(node.left,name);    
+		if (leftResult!=null) {
+		    return leftResult;
+		}
+		BSTNode<Contact> rightResult = print_firstname(node.right,name);
+		if (rightResult != null) {
+		    return rightResult;
+		}
+		return null;
 		
-	/*
-	 * this method for search in contacts list by number
-	 */
-	public static boolean search_number(String number) { 
-		return false;
+		
 	}
 	
 
-	public static void print_firstname(String name) {
-	
-	
-	}
-	
-	
-	
 	// method for print events alphabetically
 	public static void print_alph() {
 		
@@ -195,32 +218,40 @@ public class PhoneBook {
 		events.findFirst();//1
 		// check elements in events list
 		while (!events.last()) {//n-1
+			if(events.retrieve().type == 1) {
 			System.out.println("Event title:" + events.retrieve().get_title());//n
 			System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//n
 			System.out.println("Event date and time:" + events.retrieve().get_date_time());//n
 			System.out.println("Event location:" + events.retrieve().get_location());//n
 			System.out.print("\n");//n
+			}
 			// move current into next element
 			events.findNext();//n
 		}
 		// print last element in event list.
+		if(events.retrieve().type == 1) {
 		System.out.println("Event title:" + events.retrieve().get_title());//1
 		System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//1
 		System.out.println("Event date and time:" + events.retrieve().get_date_time());//1
 		System.out.println("Event location:" + events.retrieve().get_location());//1
 		System.out.print("\n");//1
 		}
+		}
 	
 	// Time Complexity of print_alph method : 7n + 8 O(n)
 
 	 //this method for schecule an Event   
 	 public static void shceduleEvent() {       
+		
+}
+	 //this method for schecule an Event   
+	 public static void shceduleAppoint() {       
 			System.out.println("Enter event title:"); //1
 			String event_title=input.next();//1
 			System.out.println("Enter contact name:");//1
 			input.nextLine();//1
 			String event_contactname=input.nextLine();//1
-			Contact contact = searchByName(event_contactname);//n
+			Contact contact = conts.searchbyName(event_contactname);//n
 			if(contact==null) {//1
 				System.out.println("contact not found !");//1
 				return;//1
@@ -282,8 +313,7 @@ public class PhoneBook {
 							
 			}                                                                                           
 		
-}
-	 
+}	 
 	 //5n + 25 O(n)
 	public static void main(String[] args) {
 
@@ -317,7 +347,7 @@ public class PhoneBook {
 				       System.out.print("Enter the contact's name:");
 				       input.nextLine();
 				        String contact_name = input.nextLine();
-						while(searchByName(contact_name) != null) {
+						while(conts.searchbyName(contact_name) != null) {
 							System.out.print("Contact is already exists! ");
 							
 							System.out.print("\nEnter contact's name: ");
@@ -326,7 +356,7 @@ public class PhoneBook {
 						}
 				        System.out.print("Enter the contact's phone number:");
 				        String contact_phone = input.next();
-						while(search_number(contact_phone)) {
+						while(searchBynumber(conts.getRoot(), contact_phone) != null) {
 							System.out.print("Contact number is already exists! ");
 							
 							System.out.print("Enter the contact's phone number: ");
@@ -368,20 +398,45 @@ public class PhoneBook {
 					deletcontact(cont_delete_name);
 					break;
 				case 4:
+				
+					System.out.println("Enter type:"); //1
+					System.out.println("1.event"); //1
+					System.out.println("2.appointment");//1
+					System.out.print("Enter your choise");//1
+					input.nextLine();
+					String Choica = input.nextLine();//1
 					
+
+					if (conts.empty())//if contact list is empty (1)
+						System.out.println("Contact its empty");//1
+					
+					else {// if contact list not empty (1)
+						// user choose the serach criteria
+						switch (Choica) {//1
+						// if user want search by name
+						case "1": {//1				
 	
 					shceduleEvent();
 					break;
-			
+						}
+						case "2":{
+							shceduleAppoint();
+							break;
+						}
+						}
+					}
+					break;
 				case 5:
 					printEventDetails();
 					break;
 				case 6:
 					
 					System.out.print("Enter the first name: ");
-					String firstname = input.next();
+					input.nextLine();
+					String firstname = input.nextLine();
+					String[] namefirst = firstname.split("\\s");
 
-					print_firstname(firstname);
+					print_firstname(conts.getRoot(), namefirst[0]);
 
 					break;
 				case 7:

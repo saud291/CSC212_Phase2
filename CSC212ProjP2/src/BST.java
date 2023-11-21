@@ -19,7 +19,12 @@ public class BST <T extends Comparable<T>>{
     public BST() {
         root = current = null; //1
     }
-
+    public void findRoot() {
+    	current = root;
+    }
+    public BSTNode<T> getRoot(){
+    	return root;
+    }
     public boolean empty() {
         return root == null; //1
     }
@@ -41,9 +46,45 @@ public class BST <T extends Comparable<T>>{
   * 
   * 
   */
+    public boolean findkey(String tkey) {
+    	BSTNode<T> p = root,q = root;
+    	if(empty())
+    	return false;
+    	while(p != null) {
+    	q = p;
+    	if(p.key.compareTo(tkey) == 0) {
+    	current = p;
+    	return true;
+    	}
+    	else if(tkey.compareTo(p.key) < 0)
+    	p = p.left;
+    	else
+    	p = p.right;
+    	}
+    	current = q;
+    	return false;
+    	}
+    public Contact searchbyName(String tkey) {
+    	BSTNode<T> p = root,q = root;
+    	if(empty())
+    	return null;
+    	while(p != null) {
+    	q = p;
+    	if(p.key.compareTo(tkey) == 0) {
+    	current = p;
+    	return (Contact) current.data;
+    	}
+    	else if(tkey.compareTo(p.key) < 0)
+    	p = p.left;
+    	else
+    	p = p.right;
+    	}
+    	current = q;
+    	return null;
+    	}
   
     public boolean insert(String k, T val) {
-    return false;
+ return false;
     	}
 	public boolean search(T val) {//1
 	return false;

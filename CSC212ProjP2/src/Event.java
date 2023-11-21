@@ -38,6 +38,7 @@ public class Event implements Comparable<Event> {
 		this.date_time = event_date_time;
 		this.location = event_location;
 		event_contacts = new BST<Contact>();
+		this.appointment_Contact = null;
 		type = 1;
 	}
 
