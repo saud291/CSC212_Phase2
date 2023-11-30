@@ -18,9 +18,9 @@ public class Event implements Comparable<Event> {
 	private String title;
 	private Date date_time;
 	private String location;
-	public Contact appointment_Contact;
-	BST<Contact>event_contacts; 
-	public int type;
+	private Contact appointment_Contact;
+	LinkedList<Contact>event_contacts; 
+	private int type;
 	
 	
 	// add appointment
@@ -28,7 +28,7 @@ public class Event implements Comparable<Event> {
 		this.title = event_title;
 		this.date_time = event_date_time;
 		this.location = event_location;
-		appointment_Contact = contact;
+		this.appointment_Contact = contact;
 		type = 0;
 	}
 	
@@ -37,7 +37,7 @@ public class Event implements Comparable<Event> {
 		this.title = event_title;
 		this.date_time = event_date_time;
 		this.location = event_location;
-		event_contacts = new BST<Contact>();
+		event_contacts = new LinkedList<Contact>();
 		this.appointment_Contact = null;
 		type = 1;
 	}
@@ -56,7 +56,9 @@ public class Event implements Comparable<Event> {
 	public Contact get_appContact() {
 		return appointment_Contact;
 	}
-
+	public int getType() {
+		return type;
+	}
 
 	public int compareTo(Event e) {
 		return this.title.compareTo(e.title);

@@ -21,7 +21,7 @@ public class PhoneBook {
 	static LinkedList<Event> events = new LinkedList();
 	static Scanner input = new Scanner(System.in);
 
-	
+
 	//method for search contact in list
 	public static void Searchcontact() {
 		System.out.println("Enter search criteria:"); //1
@@ -39,7 +39,103 @@ public class PhoneBook {
 		else {// if contact list not empty (1)
 			// user choose the serach criteria
 			switch (Choicec) {//1
-		
+			// if user want search by name
+			case "1": {//1
+				System.out.print("Enter the contact's name: ");
+				String name = input.nextLine();
+				if (conts.findkey(name)) {
+					System.out.println("Contact found! ");
+					System.out.println("Name: " + conts.retrieve().getContact_name());
+					System.out.println("Phone Number: " + conts.retrieve().getContact_number());
+					System.out.println("Email Address: " + conts.retrieve().getContact_mail());
+					System.out.println("Address: " + conts.retrieve().getContact_address());
+					System.out.println("Birthday: " + conts.retrieve().getContact_birthDay());
+					System.out.println("Notes: " + conts.retrieve().getContact_notes());
+				}else {
+				System.out.println("Contact not found!");
+				}
+			}
+				break;//1
+				
+				// 11n + 30 O(n)
+				// if user want search by phone number
+			case "2": {
+				System.out.print("Enter the contact's Phone number");
+				String num = input.nextLine();
+				if (conts.Searchnumber(num)) {
+					System.out.println("Contact found! ");
+					System.out.println("Name: " + conts.retrieve().getContact_name());
+					System.out.println("Phone Number: " + conts.retrieve().getContact_number());
+					System.out.println("Email Address: " + conts.retrieve().getContact_mail());
+					System.out.println("Address: " + conts.retrieve().getContact_address());
+					System.out.println("Birthday: " + conts.retrieve().getContact_birthDay());
+					System.out.println("Notes: " + conts.retrieve().getContact_notes());
+					
+				}else {
+				System.out.println("Contact not found!");
+				}
+			}
+				break;//1
+				
+				// 11n + 15 O(n)
+				// if user want search by email address
+			case "3": {
+				System.out.println("Enter the contact's Email Address: ");
+				String em = input.nextLine();
+				if (conts.SearchEmail(em)) {
+					System.out.println("Contact found! ");
+					System.out.println("Name: " + conts.retrieve().getContact_name());
+					System.out.println("Phone Number: " + conts.retrieve().getContact_number());
+					System.out.println("Email Address: " + conts.retrieve().getContact_mail());
+					System.out.println("Address: " + conts.retrieve().getContact_address());
+					System.out.println("Birthday: " + conts.retrieve().getContact_birthDay());
+					System.out.println("Notes: " + conts.retrieve().getContact_notes());
+					
+				}else {
+				System.out.println("Contact not found!");
+				}
+			}
+				break;//1
+				// 11n + 15 O(n)
+				// if user want search by address
+			case "4": {
+				System.out.print("Enter the contact's Address: ");
+				String add = input.nextLine();
+				if (conts.SearchAddress(add)) {
+					System.out.println("Contact found! ");
+					System.out.println("Name: " + conts.retrieve().getContact_name());
+					System.out.println("Phone Number: " + conts.retrieve().getContact_number());
+					System.out.println("Email Address: " + conts.retrieve().getContact_mail());
+					System.out.println("Address: " + conts.retrieve().getContact_address());
+					System.out.println("Birthday: " + conts.retrieve().getContact_birthDay());
+					System.out.println("Notes: " + conts.retrieve().getContact_notes());
+				}else {
+				System.out.println("Contact not found!");
+				}
+			}
+				break;//1
+				// 11n + 15 O(n)
+				// if user want search by birthday date
+			case "5": {
+				System.out.print("Enter the contact's Birthday: ");
+				Date d = new Date(input.nextLine());
+				if (conts.SearchBirthday(d)) {
+					System.out.println("Contact found! ");
+					System.out.println("Name: " + conts.retrieve().getContact_name());
+					System.out.println("Phone Number: " + conts.retrieve().getContact_number());
+					System.out.println("Email Address: " + conts.retrieve().getContact_mail());
+					System.out.println("Address: " + conts.retrieve().getContact_address());
+					System.out.println("Birthday: " + conts.retrieve().getContact_birthDay());
+					System.out.println("Notes: " + conts.retrieve().getContact_notes());
+				}else {
+				System.out.println("Contact not found!");
+				}
+			}
+			
+				break;//1
+				// 11n + 75 O(n)
+				default:
+					System.out.println("plesae enter valid input !");
 }
 		}
 	}
@@ -73,10 +169,10 @@ public class PhoneBook {
 				// check elements in events list
 				while (!events.last()) {//n-1
 					// if event has same contact name that user enter.
-					if (events.retrieve().appointment_Contact.getContact_name().compareTo(n) == 0) {//n
+					if (events.retrieve().get_appContact().getContact_name().compareTo(n) == 0) {//n
 						System.out.println("Event found!\r\n");//n
 						System.out.println("Event title:" + events.retrieve().get_title());//n
-						System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//n
+						System.out.println("Contact name:" + events.retrieve().get_appContact().getContact_name());//n
 						System.out.println("Event date and time:" + events.retrieve().get_date_time());//n
 						System.out.println("Event location:" + events.retrieve().get_location());//n
 						// change boolean found to true that means system find event has same contact name that user enter.
@@ -89,10 +185,10 @@ public class PhoneBook {
 				}
 				// check the last element in event list
 				// if event has same contact name that user enter.
-				if (events.retrieve().appointment_Contact.getContact_name().compareTo(n) == 0) {//1
+				if (events.retrieve().get_appContact().getContact_name().compareTo(n) == 0) {//1
 					System.out.println("Event found!\r\n");//1
 					System.out.println("Event title:" + events.retrieve().get_title());//1
-					System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//1
+					System.out.println("Contact name:" + events.retrieve().get_appContact().getContact_name());//1
 					System.out.println("Event date and time:" + events.retrieve().get_date_time());//1
 					System.out.println("Event location:" + events.retrieve().get_location());//1
 					// change boolean found to true that means system find event has same contact name that user enter.
@@ -115,10 +211,10 @@ public class PhoneBook {
 				// check elements in events list
 				while (!events.last()) {//n-1
 					// if event has event title that user enter.
-					if (events.retrieve().get_title().equalsIgnoreCase(n)) {//n
+					if (events.retrieve().get_title().equalsIgnoreCase(n) && events.retrieve().getType() == 1) {//n
 						System.out.println("Event found!\r\n");//n
 						System.out.println("Event title:" + events.retrieve().get_title());//n
-						System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//n
+						System.out.println("Contact name:" + events.retrieve().get_appContact().getContact_name());//n
 						System.out.println("Event date and time:" + events.retrieve().get_date_time());//n
 						System.out.println("\nEvent location:" + events.retrieve().get_location());//n
 						// change boolean found to true that means system find event has same event title that user enter.
@@ -131,10 +227,10 @@ public class PhoneBook {
 				}
 				// check the last element in event list
 				// if event has event title that user enter.
-				if (events.retrieve().get_title().equalsIgnoreCase(n)) {//1
+				if (events.retrieve().get_title().equalsIgnoreCase(n) && events.retrieve().getType() == 1) {//1
 					System.out.println("Event found!\r\n");//1
 					System.out.println("Event title:" + events.retrieve().get_title());//1
-					System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//1
+					System.out.println("Contact name:" + events.retrieve().get_appContact().getContact_name());//1
 					System.out.println("Event date and time:" + events.retrieve().get_date_time());//1
 					System.out.println("Event location:" + events.retrieve().get_location());//1
 					// change boolean found to true that means system find event has same event title that user enter.
@@ -154,9 +250,40 @@ public class PhoneBook {
 
 	// method for delete a contact
 	public static void deletcontact(String name) {
-		
+		if(conts.empty())
+			System.out.println("Contact its empty");
+		else {
+			if(!conts.findkey(name))
+				System.out.println("Contact not found");
+			else {
+				Contact c = conts.searchbyName(name);
+				c = conts.retrieve();
+				if(!c.event.empty()) {
+					c.event.findFirst();
+					while(!c.event.last()) {
+						Event e = c.event.retrieve();
+						if(!events.empty()&& events.retrieve().get_date_time().compareTo(e.get_date_time())==0
+								&& events.retrieve().get_location().compareTo(e.get_location())==0
+								&& events.retrieve().getType() == e.getType()) {
+							events.remove(e);
+							
+						}
+						events.findNext();
+						}
+					Event e = c.event.retrieve();
+					if(!events.empty()&& events.retrieve().get_date_time().compareTo(e.get_date_time())==0
+							&& events.retrieve().get_location().compareTo(e.get_location())==0
+							&& events.retrieve().getType() == e.getType()) {
+						events.remove(e);
+					}
+				}
+				conts.remove(c.getContact_name());
+
+				System.out.println("Contact deleted successfully! ");
+				
+			}
+		}
 	}
-	
 public static BSTNode<Contact> searchBynumber(BSTNode<Contact> node, String number) { 
 	if (node==null) {
     return null;
@@ -218,24 +345,22 @@ return null;
 		events.findFirst();//1
 		// check elements in events list
 		while (!events.last()) {//n-1
-			if(events.retrieve().type == 1) {
 			System.out.println("Event title:" + events.retrieve().get_title());//n
-			System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//n
+			System.out.println("Contact name:" + events.retrieve().get_appContact().getContact_name());//n
 			System.out.println("Event date and time:" + events.retrieve().get_date_time());//n
 			System.out.println("Event location:" + events.retrieve().get_location());//n
 			System.out.print("\n");//n
-			}
+			
 			// move current into next element
 			events.findNext();//n
 		}
 		// print last element in event list.
-		if(events.retrieve().type == 1) {
 		System.out.println("Event title:" + events.retrieve().get_title());//1
-		System.out.println("Contact name:" + events.retrieve().appointment_Contact.getContact_name());//1
+		System.out.println("Contact name:" + events.retrieve().get_appContact().getContact_name());//1
 		System.out.println("Event date and time:" + events.retrieve().get_date_time());//1
 		System.out.println("Event location:" + events.retrieve().get_location());//1
 		System.out.print("\n");//1
-		}
+		
 		}
 	
 	// Time Complexity of print_alph method : 7n + 8 O(n)

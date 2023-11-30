@@ -24,8 +24,13 @@ public class Contact implements Comparable<Contact> {
 	LinkedList<Event>event;
 
 	public Contact() {
+		this.contact_name = null;
+		this.contact_number = null;
+		this.contact_mail = null;
+		this.contact_address = null;
 		this.contact_birthDay = null;
-	}
+		this.contact_notes = null;
+		}
 
 	public Contact(String contact_name, String contact_number, String contact_mail, String contact_address,
 			Date contact_birthDay, String contact_notes) {
@@ -86,10 +91,26 @@ public class Contact implements Comparable<Contact> {
 	public String getContact_notes() {
 		return contact_notes;
 	}
-@Override
-	public int compareTo(Contact o) {
-		return this.contact_name.compareTo(o.contact_name); //1
+	public int compareToPhone(String Phone) {
+		return (this.contact_number.compareToIgnoreCase(Phone));
 	}
-// 1 O(1)
+
+	public int compareToEmail(String emailaddress) {
+		return (this.contact_mail.compareToIgnoreCase(emailaddress));
+	}
+
+	public int compareToAddress(String address) {
+		return (this.contact_address.compareToIgnoreCase(address));
+	}
+
+	public int compareToBirthday(Date birthday) {
+		return (this.contact_birthDay.compareTo(birthday));
+	}
+
+	@Override
+	public int compareTo(Contact o) {
+		return this.contact_name.compareTo(o.contact_name); // 1
+
+	}
 	
 }
