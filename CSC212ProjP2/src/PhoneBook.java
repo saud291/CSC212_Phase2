@@ -366,9 +366,59 @@ return null;
 	// Time Complexity of print_alph method : 7n + 8 O(n)
 
 	 //this method for schecule an Event   
-	 public static void shceduleEvent() {       
+	public static void shceduleEvent() {  
+	     
+	     System.out.println("Enter event title: ");
+	     String eventTitle = input.next();
+	     System.out.println("Enter contacts name separated by a comma: ");
+	     String contactName = input.next();
+	     contact contactEvent = searchbyName(contactName);
+	     if(contactEvent == null){
+	         System.out.println("Sorry there is no contact");
+	         return;
+	     }
+	     System.out.println("Enter event date and time (MM/DD/YYYY HH:MM): ");
+	     Date dateTime;
+	   try {
+				 dateTime = new Date(input.nextLine());//1
+				}catch(IllegalArgumentException i) {
+					System.out.print("date is not correct, enter correct date \n");//1
+					 dateTime = new Date(input.nextLine());//1
+
+				
+				}
+			
+			System.out.println("Enter event location: ");
+			String eventLocation = input.nextLine();
+			
+			if(events.empty()){
+			    Event e = new Event(eventTitle, contactName, dateTime, eventLocation);
+			    events.insert(e);
+			    conts.event.insert(e);
+			    System.out.println("Event scheduled successfully!");
+			}
+			
+			else{
+			    events.findFirst();
+			    while(!events.last()){
+			        if(events.retrieve.get_date_time.equals(dateTime) && events.retrieve.getContact_name.equalsIgnoreCase(contactName) ){
+			          System.out.println("Sorry there is event this time");
+			          return;
+			        }
+			        events.findNext();
+			    }
+			    if(events.retrieve.get_date_time.equals(dateTime) && events.retrieve.getContact_name.equalsIgnoreCase(contactName) ){
+			          System.out.println("Sorry there is event this time");
+			          return;
+			    
+			}
+			  Event e = new Event(eventTitle, contactName, dateTime, eventLocation);
+			    events.insert(e);
+			    conts.event.insert(e);
+			    System.out.println("Event scheduled successfully!");
 		
 }
+
 	 //this method for schecule an Event   
 	 public static void shceduleAppoint() {       
 			System.out.println("Enter event title:"); //1
