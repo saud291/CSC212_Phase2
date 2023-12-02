@@ -17,8 +17,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PhoneBook {
-	static BST<Contact> conts = new BST();
-	static LinkedList<Event> events = new LinkedList();
+	static BST conts = new BST();
+	static LinkedList events = new LinkedList();
 	static Scanner input = new Scanner(System.in);
 
 
